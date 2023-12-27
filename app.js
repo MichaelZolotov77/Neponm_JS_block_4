@@ -1,17 +1,22 @@
-function filterArray(array, callback) {
-  const newArray = [];
-  for (let i = 0; i < array.length; i += 1) {
-    if (callback(array[i])) newArray.push(array[i]);
+function factorial(n) {
+  if (n === 0) return 1;
+
+  return n * factorial(n - 1);
+}
+
+console.log(factorial(5));
+
+let counter = 0;
+// принимает символ и возвращает этот символ в пяти экземплярах
+function repeater(char) {
+  counter++;
+
+  if (counter === 5) {
+    counter === 0;
+    return char;
   }
-  return newArray;
+
+  return char + repeater(char);
 }
 
-function isOdd(num) {
-  return num % 2 !== 0;
-}
-function isEven(num) {
-  return num % 2 === 0;
-}
-
-const result = filterArray([1, 2, 3, 4, 5], isEven);
-console.log(result);
+console.log(repeater("a2"));
