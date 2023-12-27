@@ -1,24 +1,25 @@
-//1. Function Declaration
-sum(1, 4); // только ее можно вызвать до объявления
-function sum(a, b) {
-  return a + b;
+// функция высшего порядка, принимает функцию в параметрах
+function copyArrayAndDoSmth(arr, instruction) {
+  const output = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    output.push(instruction(arr[i]));
+  }
+
+  return output;
+}
+// функция - колбек
+function numSquared(num) {
+  return num ** 2;
 }
 
-//2. Function Expression
-const sum1 = function (a, b) {
-  return a + b;
-};
+// функция - колбек
+function divideBy2(num) {
+  return num / 2;
+}
 
-//3. IIFE (Immediately-invoked function expression)
+const result = copyArrayAndDoSmth([7, 8, 9], numSquared);
+const result2 = copyArrayAndDoSmth([10, 20, 30], divideBy2);
 
-(function (a, b) {
-  return a + b;
-})(5, 14);
-
-//4. Arrow function
-const sum3 = (a, b) => {
-  return a + b;
-};
-
-const sum4 = (a, b) => a + b;
-const add1 = (x) => x + 1; // тут можно без скобок
+console.log(result);
+console.log(result2);
