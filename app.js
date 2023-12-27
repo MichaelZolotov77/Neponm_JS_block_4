@@ -1,8 +1,9 @@
-let counter = 0;
 function getLength(arr) {
-  counter++;
-  if (!arr.pop()) return counter - 1;
-  return getLength(arr);
+  if (arr.pop() === undefined) {
+    return 0;
+  }
+
+  return 1 + getLength(arr);
 }
 
-getLength(arr);
+console.log(getLength([1, 2, 3, 4, 5, 14]));
