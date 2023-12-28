@@ -1,9 +1,8 @@
-// function getLength(arr) {
-//   if (!arr.pop()) return 0;
+function addByX(x) {
+  return (y) => x + y;
+}
 
-//   return 1 + getLength(arr);
-// }
+const addByTwo = addByX(2);
 
-const getLength = (arr) => (!arr.pop() ? 0 : 1 + getLength(arr));
-
-console.log(getLength([1, 2, 3, 4, 5, 14]));
+console.log(addByTwo(3)); // 5
+console.log(addByTwo(5)); // 7
