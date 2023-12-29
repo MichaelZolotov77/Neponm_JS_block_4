@@ -1,16 +1,28 @@
-const supporter1 = {
-  club: "Milan",
+function censor() {
+  let arr = [];
+  return (firstElement, secondElement) => {
+    if (secondElement === undefined) {
+      for (i = 0; i < arr.length; i++) {
+        firstElement = firstElement.replace(
+          new RegExp(arr[i].firstElement, "gi"),
+          arr[i].secondElement
+        );
+      }
+      return firstElement;
+    } else {
+      arr.push({ firstElement, secondElement });
+    }
+  };
+}
 
-  chant() {
-    setTimeout(() => console.log("Forza", this.club), 1000);
-  },
-};
+const changeScene = censor();
 
-const supporter2 = {
-  club: "Inter",
-};
+changeScene("PHP", "JS");
 
-supporter1.chant();
+changeScene("backend", "frontend");
 
-supporter2.chant = supporter1.chant.bind(supporter2);
-supporter2.chant();
+console.log(
+  changeScene(
+    "PHP is the most popular programming language for backend web-development"
+  )
+); // должно распечатать 'JS is the most popular programming language for frontend web-development'
