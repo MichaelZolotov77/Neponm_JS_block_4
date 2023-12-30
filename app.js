@@ -1,16 +1,14 @@
 function censor() {
-  let arr = [];
-  return (firstElement, secondElement) => {
-    if (secondElement === undefined) {
-      for (i = 0; i < arr.length; i++) {
-        firstElement = firstElement.replace(
-          new RegExp(arr[i].firstElement, "gi"),
-          arr[i].secondElement
-        );
-      }
-      return firstElement;
+  const censoredArr = [];
+
+  return function (str1, str2 = "") {
+    if (str2) {
+      censoredArr.push([str1, str2]);
     } else {
-      arr.push({ firstElement, secondElement });
+      for (let pair of censoredArr) {
+        str1 = str1.replace(new RegExp(pair[0], "gi"), pair[1]);
+      }
+      return str1;
     }
   };
 }
